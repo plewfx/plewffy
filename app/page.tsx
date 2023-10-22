@@ -27,7 +27,7 @@ import { HelpCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { techs } from "@/technologies.ts";
+import { techs } from "@/technologies";
 
 export default function Home() {
   const projects = useQuery(api.projects.get);
@@ -59,7 +59,7 @@ export default function Home() {
         </TooltipTrigger>
         <TooltipContent>
           <ul className="flex items-center gap-2 flex-wrap">
-            {project.technologies.map((technology) => {
+            {project.technologies.map((technology: string) => {
               const tech = techs.find((t) => t.name === technology);
               return (
                 <li key={technology} className="hover:text-primary">
