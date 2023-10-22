@@ -62,3 +62,23 @@
     @apply text-primary;
   }
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-primary-foreground;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/40;
+}
