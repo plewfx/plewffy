@@ -1,0 +1,1 @@
+{"title": "Saas landing", "description": "Landing page of web development service", "features": ["Reusable components", "Tab panels"], "img": "/saas.png", "url": "https://saas-dev-theta.vercel.app/", "technologies": ["NextJS", "Tailwind", "shadcn"]}
