@@ -61,11 +61,14 @@ export default function Home() {
           <ul className="flex items-center gap-2 flex-wrap">
             {project.technologies.map((technology: string) => {
               const tech = techs.find((t) => t.name === technology);
-              return (
-                <li key={technology} className="hover:text-primary">
-                  <Link href={tech.url}>{technology}</Link>
-                </li>
-              );
+
+              if (tech) {
+                return (
+                  <li key={technology} className="hover:text-primary">
+                    <Link href={tech.url}>{technology}</Link>
+                  </li>
+                );
+              }
             })}
           </ul>
         </TooltipContent>
