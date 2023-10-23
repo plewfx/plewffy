@@ -1,11 +1,9 @@
 "use client";
 
 import { useQuery } from "convex/react";
-
 import { api } from "../convex/_generated/api";
 
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/spinner";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Card,
@@ -27,52 +25,54 @@ import { HelpCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { techs } from "@/technologies";
+import { techs, stack } from "@/constants";
 
 export default function Home() {
   const projects = useQuery(api.projects.get);
 
   const renderedProjects = projects?.map((project) => (
     <li key={project._id}>
-      <Tooltip>
-        <TooltipTrigger>
-          <Card>
-            <CardHeader>
-              <Image
-                src={"/projects" + project.img}
-                width={300}
-                height={100}
-                alt={project.name}
-                className="rounded-lg mb-5"
-              />
-              <CardTitle className="text-start">{project.name}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>{project.description}</CardDescription>
-            </CardContent>
-            <CardFooter>
-              <Button variant="secondary" asChild>
-                <Link href={project.url}>Live app</Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        </TooltipTrigger>
-        <TooltipContent>
-          <ul className="flex items-center gap-2 flex-wrap">
-            {project.technologies.map((technology: string) => {
-              const tech = techs.find((t) => t.name === technology);
+      <Link href={project._id}>
+        <Tooltip>
+          <TooltipTrigger>
+            <Card>
+              <CardHeader>
+                <Image
+                  src={"/projects" + project.img}
+                  width={300}
+                  height={213}
+                  alt={project.name}
+                  className="rounded-lg mb-5 w-[300px] h-[213px]"
+                />
+                <CardTitle className="text-start">{project.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>{project.description}</CardDescription>
+              </CardContent>
+              <CardFooter>
+                <Button variant="secondary" asChild>
+                  <Link href={project.url}>Live app</Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </TooltipTrigger>
+          <TooltipContent>
+            <ul className="flex items-center gap-2 flex-wrap">
+              {project.technologies.map((technology: string) => {
+                const tech = techs.find((t) => t.name === technology);
 
-              if (tech) {
-                return (
-                  <li key={technology} className="hover:text-primary">
-                    <Link href={tech.url}>{technology}</Link>
-                  </li>
-                );
-              }
-            })}
-          </ul>
-        </TooltipContent>
-      </Tooltip>
+                if (tech) {
+                  return (
+                    <li key={technology} className="hover:text-primary">
+                      <Link href={tech.url}>{technology}</Link>
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </TooltipContent>
+        </Tooltip>
+      </Link>
     </li>
   ));
 
@@ -82,12 +82,11 @@ export default function Home() {
         <div className="mx-auto my-0 max-w-[85%]">
           <div className="flex flex-col items-center gap-5 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold capitalize">
-              Young <span>frontend</span> developer <br /> form{" "}
+              Young <span>frontend</span> developer <br /> from{" "}
               <span>Kazakhstan</span>
             </h1>
             <p>
-              My name is <span>Akhmet Mukhammedali</span> (Plewffy is just a
-              pseudonym). I am 15 y.o.
+              My name is <span>Akhmet Mukhammedali</span>. I am 15 y.o.
               <br />
               And I am interested in Web development. I can create applications
               using{" "}
@@ -103,10 +102,33 @@ export default function Home() {
       </section>
       <section className="py-10 lg:py-20" id="stack">
         <div className="mx-auto my-0 max-w-[85%]">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center gap-7">
             <h2 className="text-4xl lg:text-5xl font-bold capitalize text-center">
               My <span>technical stack</span>
             </h2>
+            <ul className="w-full flex flex-col items-start gap-6">
+              {stack.map((item) => (
+                <li key={item.name} className="w-full flex flex-col gap-4">
+                  <h3 className="text-white/50 font-semibold">{item.name}</h3>
+                  <ul className="flex justify-start gap-3 flex-wrap">
+                    {item.techs.map((technology) => (
+                      <Link key={technology.name} href={technology.url}>
+                        <li className="flex flex-col gap-3 items-center border rounded-lg p-4 hover:text-primary">
+                          <Image
+                            src={"/stack" + technology.icon}
+                            width={100}
+                            height={100}
+                            alt={technology.name}
+                            className="rounded-lg w-[100px] h-[100px] object-contain"
+                          />
+                          {technology.name}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
