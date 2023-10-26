@@ -12,8 +12,12 @@ export const techs = [
         url: "https://ui.shadcn.com/"
     },
     {
-        name: "Figma",
-        url: "https://figma.com/"
+        name: "Headless UI",
+        url: "https://headlessui.com/"
+    },
+    {
+        name: "Rapid API",
+        url: "https://rapidapi.com/hub"
     },
 ];
 
@@ -108,4 +112,19 @@ export const stack = [
             },
         ]
     },
+    {
+        name: "Authentication",
+        techs: [
+            {
+                name: "NextAuth",
+                icon: "/nextauth.png",
+                url: "https://next-auth.js.org/"
+            },
+            {
+                name: "Clerk",
+                icon: "/clerk.png",
+                url: "https://clerk.com/"
+            },
+        ]
+    }
 ];

@@ -76,6 +76,22 @@ export default function Home() {
     </li>
   ));
 
+  const handleScrollToProjects = () => {
+    const nextSection = document.getElementById("projects");
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleScrollToStack = () => {
+    const nextSection = document.getElementById("stack");
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <section className="py-10 lg:py-20">
@@ -90,12 +106,11 @@ export default function Home() {
               <br />
               And I am interested in Web development. I can create applications
               using{" "}
-              <span className="hover:underline">
-                <Link href="#stack">in-demand technologies</Link>
+              <span className="hover:underline cursor-pointer" onClick={handleScrollToStack}>in-demand technologies
               </span>
             </p>
-            <Button asChild>
-              <Link href="#projects">Look at portfolio</Link>
+            <Button onClick={handleScrollToProjects}>
+              Look at portfolio
             </Button>
           </div>
         </div>
@@ -150,7 +165,7 @@ export default function Home() {
                 </Tooltip>
               </TooltipProvider>
             </div>
-            <ul className="flex flex-wrap">
+            <ul className="flex flex-wrap gap-5 lg:gap-8">
               <TooltipProvider>
                 {projects ? (
                   renderedProjects
