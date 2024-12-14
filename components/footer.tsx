@@ -18,7 +18,7 @@ export const Footer = () => {
               </Link>
             </Button>
           </div>
-          <p className="text-foreground/50 text-center">© 2023 Plewffy</p>
+          <p className="text-foreground/50 text-center">© 2025 Plewffy</p>
         </div>
       </div>
     </footer>
