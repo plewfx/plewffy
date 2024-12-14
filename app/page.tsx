@@ -102,7 +102,7 @@ export default function Home() {
               <span>Kazakhstan</span>
             </h1>
             <p>
-              My name is <span>Akhmet Mukhammedali</span>. I am 15 y.o.
+              My name is <span>Akhmet Mukhammedali</span>. I am 17 y.o.
               <br />
               And I am interested in Web development. I can create applications
               using{" "}
